@@ -47,9 +47,17 @@ def load_all_countries(data_dir: str = "data/raw") -> pd.DataFrame:
         A single DataFrame with all 5 countries (20,540 rows).
     """
     raw_dir = Path(data_dir)
+    if not raw_dir.exists():
+        # Fallback: resolve relative to project root (parent of src/)
+        raw_dir = Path(__file__).resolve().parent.parent / data_dir
+
     frames = []
     for country, filename in COUNTRY_FILES.items():
         filepath = raw_dir / filename
+        if not filepath.exists():
+            raise FileNotFoundError(
+                f"Dataset for {country} not found at {filepath.resolve()}."
+            )
         frames.append(_clean_country(filepath, country))
     df_all = pd.concat(frames, ignore_index=True)
     return df_all

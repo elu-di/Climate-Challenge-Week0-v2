@@ -6,9 +6,10 @@ __pycache__/
 #Notebook checkpoints/
 .ipynb_checkpoints/
 
-#Data files (Never commit datasets!)
-data/
-*.csv
+# Data files (track raw challenge data for deployment)
+data/*
+!data/raw/
+!data/raw/*.csv
 
 # OS / IDE Specific
 .DS_Store
