@@ -1,0 +1,15 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+#Notebook checkpoints/
+.ipynb_checkpoints/
+
+#Data files (Never commit datasets!)
+data/
+*.csv
+
+# OS / IDE Specific
+.DS_Store
+.vscode/
